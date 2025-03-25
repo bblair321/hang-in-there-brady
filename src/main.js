@@ -153,3 +153,37 @@ function getRandomImage() {
 
 // Run after the DOM has fully loaded
 window.addEventListener("DOMContentLoaded", getRandomImage);
+
+function getRandomTitle() {
+  const titles = [
+    "Rise and Shine",
+    "Embrace the Challenge",
+    "Push Beyond Limits",
+    "Stay Strong, Keep Going",
+    "No Excuses, Just Results",
+    "You Are Unstoppable",
+    "Make Today Count",
+    "Dream It, Do It",
+    "Hustle & Heart",
+    "Stay Wild, Stay Free",
+    "Chase the Sun",
+    "Find Your Fire",
+    "Keep Moving Forward",
+    "Courage Over Comfort",
+    "Be Bold, Be Brave",
+    "Fear Less, Live More",
+    "The Future is Yours",
+    "Progress, Not Perfection",
+    "Every Step Matters",
+    "Mindset is Everything"
+  ];
+
+  const titleElement = document.querySelector(".poster-title");
+
+  if (titleElement) {
+    titleElement.innerText = titles[Math.floor(Math.random() * titles.length)];
+  } else {
+    console.error("Title element not found!")
+  }
+}
+  window.addEventListener("DOMContentLoaded", getRandomTitle);
