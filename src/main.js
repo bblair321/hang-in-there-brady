@@ -117,3 +117,39 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+function getRandomImage() {
+  const images = [
+      "./assets/bees.jpg",
+      "./assets/bridge.jpg",
+      "./assets/butterfly.jpg",
+      "./assets/cliff.jpg",
+      "./assets/elephant.jpg",
+      "./assets/flock.jpg",
+      "./assets/fox.jpg",
+      "./assets/frog.jpg",
+      "./assets/horse.jpg",
+      "./assets/lion.jpg",
+      "./assets/mountain.jpg",
+      "./assets/pier.jpg",
+      "./assets/puffins.jpg",
+      "./assets/pug.jpg",
+      "./assets/runner.jpg",
+      "./assets/squirrel.jpg",
+      "./assets/tiger.jpg",
+      "./assets/turtle.jpg"
+  ];
+
+  // Select the image element
+  const imgElement = document.querySelector(".poster-img");
+
+  // Ensure the element exists before setting src
+  if (imgElement) {
+      imgElement.src = images[Math.floor(Math.random() * images.length)];
+  } else {
+      console.error("Image element not found!");
+  }
+}
+
+// Run after the DOM has fully loaded
+window.addEventListener("DOMContentLoaded", getRandomImage);
