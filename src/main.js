@@ -228,3 +228,16 @@ function showRandom() {
   }
   const randomButton = document.querySelector(".show-random");
   randomButton.addEventListener("click", showRandom)
+
+function ShowForm() {
+    const poster = document.querySelector(".main-poster");
+    const form = document.querySelector(".poster-form");
+    poster.style.display = "none"; 
+    poster.style.visibility = "hidden";  
+    poster.style.height = "0";  
+    poster.style.margin = "0";  
+    form.classList.remove("hidden");
+}
+
+    const showFormButton = document.querySelector(".show-form");
+    showFormButton.addEventListener("click", ShowForm);
