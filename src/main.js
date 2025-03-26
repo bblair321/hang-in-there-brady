@@ -241,3 +241,32 @@ function ShowForm() {
 
     const showFormButton = document.querySelector(".show-form");
     showFormButton.addEventListener("click", ShowForm);
+
+function ShowSaved() {
+      const poster = document.querySelector(".main-poster");
+      const saved = document.querySelector(".saved-posters");
+      poster.classList.add("hidden");
+      saved.classList.remove("hidden");
+    }
+
+    const showSavedButton = document.querySelector(".show-saved");
+    showSavedButton.addEventListener("click", ShowSaved);
+
+function ShowMain() {
+      const poster = document.querySelector(".main-poster")
+      const form = document.querySelector(".poster-form")
+      const saved = document.querySelector(".save-posters")
+      form.classList.add("hidden")
+      form.classList.add("hidden")
+      poster.classList.remove("hidden")
+}
+
+      const backToMainButtonFromForm = document.querySelector(".show-main")
+      const backToMainButtonFromSaved = document.querySelector(".back-to-main")
+      if (backToMainButtonFromForm) {
+        backToMainButtonFromForm.addEventListener("click", ShowMain);
+    }
+    
+      if (backToMainButtonFromSaved) {
+          backToMainButtonFromSaved.addEventListener("click", ShowMain);
+    }
