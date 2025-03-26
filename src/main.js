@@ -187,3 +187,36 @@ function getRandomTitle() {
   }
 }
   window.addEventListener("DOMContentLoaded", getRandomTitle);
+
+function getRandomQuote() {
+  const quotes = [
+    "Believe you can, and you're halfway there. – Theodore Roosevelt",
+    "Your only limit is your mind.",
+    "Difficult roads often lead to beautiful destinations.",
+    "Dream big. Work hard. Stay focused.",
+    "Make today so awesome that yesterday gets jealous.",
+    "It always seems impossible until it’s done. – Nelson Mandela",
+    "Success is not final, failure is not fatal: it is the courage to continue that counts. – Winston Churchill",
+    "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
+    "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
+    "You miss 100% of the shots you don’t take. – Wayne Gretzky",
+    "Do what you can, with what you have, where you are. – Theodore Roosevelt",
+    "Turn your wounds into wisdom. – Oprah Winfrey",
+    "Act as if what you do makes a difference. It does. – William James",
+    "Happiness depends upon ourselves. – Aristotle",
+    "The secret of getting ahead is getting started. – Mark Twain",
+    "Go confidently in the direction of your dreams. Live the life you have imagined. – Henry David Thoreau",
+    "Doubt kills more dreams than failure ever will. – Suzy Kassem",
+    "Opportunities don’t happen. You create them. – Chris Grosser",
+    "Don’t stop when you’re tired. Stop when you’re done.",
+    "If not now, when?"
+  ]
+  const quoteElement = document.querySelector(".poster-quote");
+
+  if (quoteElement) {
+    quoteElement.innerText = quotes[Math.floor(Math.random() * quotes.length)];
+  } else {
+    console.error("Quote element not found!")
+  }
+}
+window.addEventListener("DOMContentLoaded", getRandomQuote);window
