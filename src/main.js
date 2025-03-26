@@ -219,4 +219,12 @@ function getRandomQuote() {
     console.error("Quote element not found!")
   }
 }
-window.addEventListener("DOMContentLoaded", getRandomQuote);window
+  window.addEventListener("DOMContentLoaded", getRandomQuote);window
+ 
+function showRandom() {
+    getRandomImage();
+    getRandomTitle();
+    getRandomQuote();
+  }
+  const randomButton = document.querySelector(".show-random");
+  randomButton.addEventListener("click", showRandom)
