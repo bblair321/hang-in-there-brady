@@ -241,3 +241,13 @@ function ShowForm() {
 
     const showFormButton = document.querySelector(".show-form");
     showFormButton.addEventListener("click", ShowForm);
+    
+function ShowSaved() {
+      const poster = document.querySelector(".main-poster");
+      const saved = document.querySelector(".saved-posters");
+      poster.classList.add("hidden");
+      saved.classList.remove("hidden");
+    }
+
+    const showSavedButton = document.querySelector(".show-saved");
+    showSavedButton.addEventListener("click", ShowSaved);
