@@ -116,8 +116,8 @@ window.addEventListener("DOMContentLoaded", getRandomImage);
 window.addEventListener("DOMContentLoaded", getRandomTitle);
 window.addEventListener("DOMContentLoaded", getRandomQuote);
 randomButton.addEventListener("click", showRandom);
-showFormButton.addEventListener("click", ShowForm);
-showSavedButton.addEventListener("click", ShowSaved);
+showFormButton.addEventListener("click", showForm);
+showSavedButton.addEventListener("click", showSaved);
 // functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
