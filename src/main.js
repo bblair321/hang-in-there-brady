@@ -1,5 +1,14 @@
 // query selector variables go here 👇
-
+const imgElement = document.querySelector(".poster-img");
+const titleElement = document.querySelector(".poster-title");
+const quoteElement = document.querySelector(".poster-quote");
+const randomButton = document.querySelector(".show-random");
+const poster = document.querySelector(".main-poster");
+const form = document.querySelector(".poster-form");
+const showFormButton = document.querySelector(".show-form");
+const showSavedButton = document.querySelector(".show-saved");
+const backToMainButtonFromForm = document.querySelector(".show-main")
+const backToMainButtonFromSaved = document.querySelector(".back-to-main")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -103,9 +112,13 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-
+window.addEventListener("DOMContentLoaded", getRandomImage);
+window.addEventListener("DOMContentLoaded", getRandomTitle);
+window.addEventListener("DOMContentLoaded", getRandomQuote);
+randomButton.addEventListener("click", showRandom);
+showFormButton.addEventListener("click", ShowForm);
+showSavedButton.addEventListener("click", ShowSaved);
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -119,30 +132,6 @@ function createPoster(imageURL, title, quote) {
 }
 
 function getRandomImage() {
-  const images = [
-      "./assets/bees.jpg",
-      "./assets/bridge.jpg",
-      "./assets/butterfly.jpg",
-      "./assets/cliff.jpg",
-      "./assets/elephant.jpg",
-      "./assets/flock.jpg",
-      "./assets/fox.jpg",
-      "./assets/frog.jpg",
-      "./assets/horse.jpg",
-      "./assets/lion.jpg",
-      "./assets/mountain.jpg",
-      "./assets/pier.jpg",
-      "./assets/puffins.jpg",
-      "./assets/pug.jpg",
-      "./assets/runner.jpg",
-      "./assets/squirrel.jpg",
-      "./assets/tiger.jpg",
-      "./assets/turtle.jpg"
-  ];
-
-  // Select the image element
-  const imgElement = document.querySelector(".poster-img");
-
   // Ensure the element exists before setting src
   if (imgElement) {
       imgElement.src = images[Math.floor(Math.random() * images.length)];
@@ -151,34 +140,7 @@ function getRandomImage() {
   }
 }
 
-// Run after the DOM has fully loaded
-window.addEventListener("DOMContentLoaded", getRandomImage);
-
 function getRandomTitle() {
-  const titles = [
-    "Rise and Shine",
-    "Embrace the Challenge",
-    "Push Beyond Limits",
-    "Stay Strong, Keep Going",
-    "No Excuses, Just Results",
-    "You Are Unstoppable",
-    "Make Today Count",
-    "Dream It, Do It",
-    "Hustle & Heart",
-    "Stay Wild, Stay Free",
-    "Chase the Sun",
-    "Find Your Fire",
-    "Keep Moving Forward",
-    "Courage Over Comfort",
-    "Be Bold, Be Brave",
-    "Fear Less, Live More",
-    "The Future is Yours",
-    "Progress, Not Perfection",
-    "Every Step Matters",
-    "Mindset is Everything"
-  ];
-
-  const titleElement = document.querySelector(".poster-title");
 
   if (titleElement) {
     titleElement.innerText = titles[Math.floor(Math.random() * titles.length)];
@@ -186,32 +148,8 @@ function getRandomTitle() {
     console.error("Title element not found!")
   }
 }
-  window.addEventListener("DOMContentLoaded", getRandomTitle);
 
 function getRandomQuote() {
-  const quotes = [
-    "Believe you can, and you're halfway there. – Theodore Roosevelt",
-    "Your only limit is your mind.",
-    "Difficult roads often lead to beautiful destinations.",
-    "Dream big. Work hard. Stay focused.",
-    "Make today so awesome that yesterday gets jealous.",
-    "It always seems impossible until it’s done. – Nelson Mandela",
-    "Success is not final, failure is not fatal: it is the courage to continue that counts. – Winston Churchill",
-    "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
-    "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
-    "You miss 100% of the shots you don’t take. – Wayne Gretzky",
-    "Do what you can, with what you have, where you are. – Theodore Roosevelt",
-    "Turn your wounds into wisdom. – Oprah Winfrey",
-    "Act as if what you do makes a difference. It does. – William James",
-    "Happiness depends upon ourselves. – Aristotle",
-    "The secret of getting ahead is getting started. – Mark Twain",
-    "Go confidently in the direction of your dreams. Live the life you have imagined. – Henry David Thoreau",
-    "Doubt kills more dreams than failure ever will. – Suzy Kassem",
-    "Opportunities don’t happen. You create them. – Chris Grosser",
-    "Don’t stop when you’re tired. Stop when you’re done.",
-    "If not now, when?"
-  ]
-  const quoteElement = document.querySelector(".poster-quote");
 
   if (quoteElement) {
     quoteElement.innerText = quotes[Math.floor(Math.random() * quotes.length)];
@@ -219,19 +157,14 @@ function getRandomQuote() {
     console.error("Quote element not found!")
   }
 }
-  window.addEventListener("DOMContentLoaded", getRandomQuote);window
  
 function showRandom() {
     getRandomImage();
     getRandomTitle();
     getRandomQuote();
   }
-  const randomButton = document.querySelector(".show-random");
-  randomButton.addEventListener("click", showRandom)
 
-function ShowForm() {
-    const poster = document.querySelector(".main-poster");
-    const form = document.querySelector(".poster-form");
+function showForm() {
     poster.style.display = "none"; 
     poster.style.visibility = "hidden";  
     poster.style.height = "0";  
@@ -239,34 +172,26 @@ function ShowForm() {
     form.classList.remove("hidden");
 }
 
-    const showFormButton = document.querySelector(".show-form");
-    showFormButton.addEventListener("click", ShowForm);
-
-function ShowSaved() {
-      const poster = document.querySelector(".main-poster");
-      const saved = document.querySelector(".saved-posters");
-      poster.classList.add("hidden");
-      saved.classList.remove("hidden");
-    }
-
-    const showSavedButton = document.querySelector(".show-saved");
-    showSavedButton.addEventListener("click", ShowSaved);
-
-function ShowMain() {
-      const poster = document.querySelector(".main-poster")
-      const form = document.querySelector(".poster-form")
-      const saved = document.querySelector(".save-posters")
-      form.classList.add("hidden")
-      form.classList.add("hidden")
-      poster.classList.remove("hidden")
+function showSaved() {
+    const poster = document.querySelector(".main-poster");
+    const saved = document.querySelector(".saved-posters");
+    poster.classList.add("hidden");
+    saved.classList.remove("hidden");
 }
 
-      const backToMainButtonFromForm = document.querySelector(".show-main")
-      const backToMainButtonFromSaved = document.querySelector(".back-to-main")
-      if (backToMainButtonFromForm) {
-        backToMainButtonFromForm.addEventListener("click", ShowMain);
-    }
+function showMain() {
+      const poster = document.querySelector(".main-poster");
+      const form = document.querySelector(".poster-form");
+      const saved = document.querySelector(".save-posters");
+      form.classList.add("hidden");
+      form.classList.add("hidden");
+      poster.classList.remove("hidden");
+}
+
+if (backToMainButtonFromForm) {
+  backToMainButtonFromForm.addEventListener("click", ShowMain);
+}
     
-      if (backToMainButtonFromSaved) {
-          backToMainButtonFromSaved.addEventListener("click", ShowMain);
-    }
+if (backToMainButtonFromSaved) {
+  backToMainButtonFromSaved.addEventListener("click", ShowMain);
+}
