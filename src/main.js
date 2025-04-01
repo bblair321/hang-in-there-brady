@@ -14,8 +14,10 @@ const quoteInput = document.querySelector("#poster-quote");
 const makePosterButton = document.querySelector(".make-poster");
 const backToMainButton = document.querySelector(".show-main");
 const savePosterButton = document.querySelector(".save-poster");
+const backToMainButtonFromSaved = document.querySelector(".back-to-main");
 
 // Provided data
+// biome-ignore lint/style/noVar: <explanation>
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -36,6 +38,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+// biome-ignore lint/style/noVar: <explanation>
 var titles = [
   "determination",
   "success",
@@ -73,6 +76,7 @@ var titles = [
   "understanding",
   "wisdom"
 ];
+// biome-ignore lint/style/noVar: <explanation>
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -114,7 +118,9 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
+// biome-ignore lint/style/noVar: <explanation>
 var savedPosters = [];
+// biome-ignore lint/style/noVar: <explanation>
 var currentPoster;
 
 // event listeners go here 👇
@@ -127,6 +133,7 @@ backToMainButton.addEventListener("click", showMain);
 showSavedButton.addEventListener("click", showSaved);
 makePosterButton.addEventListener("click", createCustomPoster);
 savePosterButton.addEventListener("click", savePoster);
+backToMainButtonFromSaved.addEventListener("click", showMain);
 
 // functions go here 👇
 
@@ -165,9 +172,18 @@ function createCustomPoster(event) {
 }
 
 function savePoster() {
-  if (currentPoster) {
+  if (!currentPoster) return;
+
+  const isDuplicate = savedPosters.some(
+    poster => poster.imageURL === currentPoster.imageURL &&
+              poster.title === currentPoster.title &&
+              poster.quote === currentPoster.quote
+  );
+
+  if (!isDuplicate) {
     savedPosters.push(currentPoster);
-    console.log(savedPosters);
+    showSaved();
+  }
 }
 
 function showRandom() {
@@ -204,27 +220,29 @@ function showMain() {
   form.classList.add("hidden");
 
   const savedPostersSection = document.querySelector(".saved-posters");
-  if (savedPostersSection) savedPostersSection.classList.add("hidden");
+  if (savedPostersSection) {
+    savedPostersSection.classList.add("hidden");
+  }
 
   poster.style.display = "block";
-  poster.style.visibility = "visible";
-  poster.style.height = "auto";
-  poster.style.margin = "auto";
 }
 
 function showSaved() {
-  const savedContainer = document.querySelector(".saved-posters");
-  savedContainer.innerHTML = "";
+  const savedPostersGrid = document.querySelector(".saved-posters-grid");
+  savedPostersGrid.innerHTML = "";
+
+  // biome-ignore lint/complexity/noForEach: <explanation>
   savedPosters.forEach(poster => {
     const posterElement = document.createElement("div");
-    posterElement.classList.add("saved-poster");
+    posterElement.classList.add("mini-poster");
     posterElement.innerHTML = `
-      <img src="${poster.imageURL}" alt="Poster Image" />
-      <h3>${poster.title}</h3>
-      <p>${poster.quote}</p>
+      <img src="${poster.imageURL}" class="mini-poster-img">
+      <h3 class="mini-poster-title">${poster.title}</h3>
+      <p class="mini-poster-quote">${poster.quote}</p>
     `;
-    savedContainer.appendChild(posterElement);
+    savedPostersGrid.appendChild(posterElement);
   });
 
-  savedContainer.classList.remove("hidden");
+  document.querySelector(".main-poster").classList.add("hidden");
+  document.querySelector(".saved-posters").classList.remove("hidden");
 }
