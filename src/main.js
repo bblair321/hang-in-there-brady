@@ -230,8 +230,7 @@ function showMain() {
 function showSaved() {
   const savedPostersGrid = document.querySelector(".saved-posters-grid");
   savedPostersGrid.innerHTML = "";
-
-  // biome-ignore lint/complexity/noForEach: <explanation>
+  
   savedPosters.forEach(poster => {
     const posterElement = document.createElement("div");
     posterElement.classList.add("mini-poster");
