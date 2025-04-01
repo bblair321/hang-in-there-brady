@@ -132,7 +132,7 @@ savePosterButton.addEventListener("click", savePoster);
 
 function createPoster(imageURL, title, quote) {
   return {
-    id: Date.now(), // Unique ID based on timestamp
+    id: Date.now(),
     imageURL: imageURL, 
     title: title, 
     quote: quote
@@ -140,45 +140,36 @@ function createPoster(imageURL, title, quote) {
 }
 
 function createCustomPoster(event) {
-  event.preventDefault(); // Prevent page reload
+  event.preventDefault();
 
-  // Ensure input fields exist and have values
   if (!imgUrlInput.value || !titleInput.value || !quoteInput.value) {
     alert("Please fill in all fields before creating a poster!");
     return;
   }
 
-  // Grab the input values
   const imageUrl = imgUrlInput.value;
   const title = titleInput.value;
   const quote = quoteInput.value;
 
-  // Create a new poster object
   currentPoster = createPoster(imageUrl, title, quote);
 
-  // Save new data into respective arrays
   images.push(imageUrl);
   titles.push(title);
   quotes.push(quote);
 
-  // Update the main view with the new poster
   imgElement.src = imageUrl;
   titleElement.innerText = title;
   quoteElement.innerText = quote;
 
-  // Switch back to the main poster view
   showMain();
 }
 
-// Function to save the current poster to the savedPosters array
 function savePoster() {
   if (currentPoster) {
     savedPosters.push(currentPoster);
-    console.log(savedPosters); // Log saved posters for debugging
-  }
+    console.log(savedPosters);
 }
 
-// Function to show random poster
 function showRandom() {
   getRandomImage();
   getRandomTitle();
@@ -223,7 +214,7 @@ function showMain() {
 
 function showSaved() {
   const savedContainer = document.querySelector(".saved-posters");
-  savedContainer.innerHTML = ""; // Clear previous saved posters
+  savedContainer.innerHTML = "";
   savedPosters.forEach(poster => {
     const posterElement = document.createElement("div");
     posterElement.classList.add("saved-poster");
