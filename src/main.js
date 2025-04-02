@@ -12,7 +12,6 @@ const imgUrlInput = document.querySelector("#poster-image-url");
 const titleInput = document.querySelector("#poster-title");
 const quoteInput = document.querySelector("#poster-quote");
 const makePosterButton = document.querySelector(".make-poster");
-// const backToMainButton = document.querySelector(".show-main");
 const savePosterButton = document.querySelector(".save-poster");
 const backToMainButtonFromSaved = document.querySelector(".back-to-main");
 const showUnmotivationalPoster = document.querySelector(".show-unmotivational")
