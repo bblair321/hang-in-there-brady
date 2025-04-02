@@ -245,12 +245,14 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener("DOMContentLoaded", getRandomImage);
-window.addEventListener("DOMContentLoaded", getRandomTitle);
-window.addEventListener("DOMContentLoaded", getRandomQuote);
+// learned you could combine individual functions that do the same thing into a single listener
+window.addEventListener("DOMContentLoaded", () => {
+  getRandomImage();
+  getRandomTitle();
+  getRandomQuote();
+})
 randomButton.addEventListener("click", showRandom);
 showFormButton.addEventListener("click", showForm);
-// backToMainButton.addEventListener("click", showMain);
 showSavedButton.addEventListener("click", showSaved);
 makePosterButton.addEventListener("click", createCustomPoster);
 savePosterButton.addEventListener("click", savePoster);
